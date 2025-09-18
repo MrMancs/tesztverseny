@@ -33,7 +33,12 @@ public class Main {
         int feladatSorszam = Integer.parseInt(in.nextLine());
         double[] helyesFeladatStat = handler.helyesFeladatStat(feladatSorszam);
         System.out.println("A feladatra " + (int)helyesFeladatStat[0] + " fő, a versenyzők " + Math.round(helyesFeladatStat[1] *100.0) /100.0  + "%-a adott helyes\n" + "választ.");
+        System.out.println();
 
+        System.out.println("6. feladat: A versenyzők pontszámának meghatározása: ");
+        handler.calculatePoints();
+        handler.pointsToFile("pontok.txt");
+        System.out.println();
         debugger();
     }
 }

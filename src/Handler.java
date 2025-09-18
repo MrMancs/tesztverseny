@@ -49,7 +49,10 @@ public class Handler {
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String[] split = line.split(" ");
-            valaszok[getValaszokDb()] = split;
+
+            valaszok[getValaszokDb()] = new String[3];
+            valaszok[getValaszokDb()][0] = split[0];
+            valaszok[getValaszokDb()][1] = split[1];
 
             setValaszokDb(getValaszokDb() + 1);
         }
@@ -91,5 +94,13 @@ public class Handler {
         }
         result[1] = result[0] / getValaszokDb() * 100.0;
         return result;
+    }
+
+    public void calculatePoints() {
+
+    }
+
+    public void pointsToFile(String filename) {
+
     }
 }
