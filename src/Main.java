@@ -39,6 +39,7 @@ public class Main {
         handler.calculatePoints();
         handler.pointsToFile("pontok.txt");
         System.out.println();
+
         debugger();
     }
 }

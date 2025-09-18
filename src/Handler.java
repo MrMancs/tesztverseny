@@ -97,7 +97,33 @@ public class Handler {
     }
 
     public void calculatePoints() {
-
+        for (int i = 0; i < getValaszokDb(); i++){
+            String eltalaltaStr = eltalaltaStr(valaszok[i][1]);
+            Integer sum = 0;
+            for (int j = 0; j < eltalaltaStr.length(); j++){
+                if(eltalaltaStr.charAt(j) == '+') {
+                    switch (j) {
+                        case 0,1,2,3,4: {
+                            sum += 3;
+                            break;
+                        }
+                        case 5,6,7,8,9: {
+                            sum += 4;
+                            break;
+                        }
+                        case 10,11,12: {
+                            sum += 5;
+                            break;
+                        }
+                        case 13: {
+                            sum += 6;
+                            break;
+                        }
+                    }
+                }
+            }
+            valaszok[i][2] = sum.toString();
+        }
     }
 
     public void pointsToFile(String filename) {
