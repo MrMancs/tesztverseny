@@ -2,8 +2,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Handler {
     private String helyes;
@@ -134,7 +136,34 @@ public class Handler {
         for (int i = 0; i < getValaszokDb(); i++){
             fwki.write(valaszok[i][0]+ ";" + valaszok[i][2] + "\n");
         }
-
         fwki.close();
+    }
+
+    public Set<Integer> pointsSet() {
+        Set<Integer> result = new HashSet<>();
+        for (int i = 0; i<getValaszokDb(); i++){
+            result.add(Integer.parseInt(valaszok[i][2]));
+        }
+        return result;
+    }
+
+    public void printWinners(int points1, int points2, int points3) {
+        for(int i = 0; i < getValaszokDb(); i++){
+            if(Integer.parseInt(valaszok[i][2]) == points1) {
+                System.out.println("1. díj ("+ points1 +" pont): " +valaszok[i][0]);
+            }
+        }
+
+        for(int i = 0; i < getValaszokDb(); i++){
+            if(Integer.parseInt(valaszok[i][2]) == points2) {
+                System.out.println("2. díj ("+ points2 +" pont): " +valaszok[i][0]);
+            }
+        }
+
+        for(int i = 0; i < getValaszokDb(); i++){
+            if(Integer.parseInt(valaszok[i][2]) == points3) {
+                System.out.println("3. díj ("+ points3 +" pont): " +valaszok[i][0]);
+            }
+        }
     }
 }
