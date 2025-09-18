@@ -3,6 +3,11 @@ import java.io.IOException;
 import java.util.*;
 
 public class Main {
+    public static boolean isRunningTest = false;
+
+    private static final String testAzon = "AB123";
+    private static final int testFeladatSorszam = 10;
+
     private static Handler handler;
 
     private static void debugger(){
@@ -21,7 +26,7 @@ public class Main {
 
         Scanner in = new Scanner(System.in);
         System.out.print("3. feladat: A versenyző azonosítója = ");
-        String id = in.nextLine();
+        String id = isRunningTest ? testAzon : in.nextLine();
         String valaszai = handler.valaszai(id);
         System.out.println(valaszai + "   (a versenyző válasza)");
         System.out.println();
@@ -31,7 +36,7 @@ public class Main {
         System.out.println(handler.eltalaltaStr(valaszai) + "   (a versenyző helyes válaszai)");
 
         System.out.print("5. feladat: A feladat sorszáma = ");
-        int feladatSorszam = Integer.parseInt(in.nextLine());
+        int feladatSorszam = isRunningTest ? testFeladatSorszam : Integer.parseInt(in.nextLine());
         double[] helyesFeladatStat = handler.helyesFeladatStat(feladatSorszam);
         System.out.println("A feladatra " + (int)helyesFeladatStat[0] + " fő, a versenyzők " + Math.round(helyesFeladatStat[1] *100.0) /100.0  + "%-a adott helyes\n" + "választ.");
         System.out.println();
